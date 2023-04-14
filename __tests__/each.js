@@ -10,7 +10,6 @@ const input = [
     a: new Date(),
     b: /\d+/
   }
-
 ]
 
 test('each', () => {

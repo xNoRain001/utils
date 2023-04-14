@@ -9,6 +9,7 @@ import isNumber from './is-number'
 import isString from './is-string'
 import isBigInt from './is-bigint'
 import isSymbol from './is-symbol'
+import parseUrl from './parse-url'
 import isBoolean from './is-boolean'
 import isFunction from './is-function'
 import isUndefined from './is-undefined'
@@ -26,6 +27,7 @@ const methods = {
   isString,
   isBigInt,
   isSymbol,
+  parseUrl,
   isBoolean,
   isFunction,
   isArrayLike,
