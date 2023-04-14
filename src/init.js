@@ -1,4 +1,5 @@
 
+import keys from './keys'
 import isNull from './is-null'
 import getType from './get-type'
 import isArray from './is-array'
@@ -14,6 +15,7 @@ import isArrayLike from './is-array-like'
 import isPlainObject from './is-plain-object'
 
 const methods = {
+  keys,
   isNull,
   isArray,
   getType,
