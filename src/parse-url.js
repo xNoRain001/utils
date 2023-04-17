@@ -9,10 +9,10 @@ const parseUrl = (url = location.href) => {
     hash: ''
   }
   const regexps = {
-    protocol: /(.*?)\/\//,
-    hostname: /([^/]*)\/?/,
-    pathname: /([^?#]*)/,
-    rawSearch: /\?([^#]*)#?/,
+    protocol: /^(.*?)\/\//,
+    hostname: /^([^/]*)\/?/,
+    pathname: /^([^?#]*)/,
+    rawSearch: /^\?([^#]*)#?/,
     hash: /(.*)/
   }
 
@@ -25,11 +25,16 @@ const parseUrl = (url = location.href) => {
   })
 
   const search = {}
+  const { rawSearch } = res
 
-  res.rawSearch.replace(/(.*?)=([^&]*)&?/g, (_, $1, $2) => {
-    search[$1] = $2
-  })
   res.search = search
+
+  if (rawSearch) {
+    // TODO: http://example.com/?bebug
+    rawSearch.replace(/([^=]+?)=([^&]+?)&?/g, (_, $1, $2) => {
+      search[$1] = $2 || ''
+    })
+  }
 
   return res
 }
