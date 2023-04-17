@@ -1,6 +1,7 @@
 
 import keys from './keys'
 import each from './each'
+import last from './last'
 import isNull from './is-null'
 import getType from './get-type'
 import isArray from './is-array'
@@ -19,6 +20,7 @@ import isPlainObject from './is-plain-object'
 const methods = {
   keys,
   each,
+  last,
   isNull,
   isArray,
   getType,
