@@ -10,7 +10,7 @@ const output = [
   true
 ]
 
-test('is last', () => {
+test('last', () => {
   x.each(input, (value, index) => {
     expect(x.last(value)).toBe(output[index])
   })

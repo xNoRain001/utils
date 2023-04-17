@@ -1,4 +1,4 @@
-
+import del from './del'
 import keys from './keys'
 import each from './each'
 import last from './last'
@@ -18,6 +18,7 @@ import isArrayLike from './is-array-like'
 import isPlainObject from './is-plain-object'
 
 const methods = {
+  del,
   keys,
   each,
   last,
