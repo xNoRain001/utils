@@ -1,21 +1,27 @@
 import re
-from ..libs.blender_utils import get_operator, get_bone_chain, get_selected_bones
+from ..libs.blender_utils import (
+  get_operator, get_bone_chain, 
+  get_selected_bones, 
+  get_selected_pose_bones,
+  get_mode
+)
  
 class OBJECT_OT_rename_by_increasing (get_operator()):
   bl_idname = "object.rename_by_increasing"
   bl_label = "Rename By Increasing"
 
   def execute(self, context):
-    selected_bones = get_selected_bones()
+    is_pose_mode = get_mode() == 'POSE'
+    selected_bones = get_selected_pose_bones() if is_pose_mode else get_selected_bones()
 
     for selected_bone in selected_bones:
       bone_name = selected_bone.name
       # a_b_01.l a_b_01 a_b_01.r
       # a_b_01_01.l a_b_01_01 a_b_01_01.r
       match = re.search(r'(\d+)(\.l|\.r|$)', bone_name)
-      bones = get_bone_chain(selected_bone)
+      bones = get_bone_chain(selected_bone)[1:]
 
-      if match and bones:
+      if match and len(bones):
         n = match.group(1)
         number = int(n)
         suffix = match.group(2)
